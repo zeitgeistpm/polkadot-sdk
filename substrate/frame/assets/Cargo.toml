@@ -16,20 +16,20 @@ targets = ["x86_64-unknown-linux-gnu"]
 codec = { package = "parity-scale-codec", version = "3.6.1", default-features = false }
 log = { version = "0.4.17", default-features = false }
 scale-info = { version = "2.5.0", default-features = false, features = ["derive"] }
-sp-std = { path = "../../primitives/std", default-features = false}
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false }
 # Needed for various traits. In our case, `OnFinalize`.
-sp-runtime = { path = "../../primitives/runtime", default-features = false}
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false }
 # Needed for type-safe access to storage DB.
-frame-support = { path = "../support", default-features = false}
+frame-support = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false }
 # `system` module provides us with all sorts of useful stuff and macros depend on it being around.
-frame-system = { path = "../system", default-features = false}
-frame-benchmarking = { path = "../benchmarking", default-features = false, optional = true }
-sp-core = { path = "../../primitives/core", default-features = false}
+frame-system = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false }
+frame-benchmarking = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false, optional = true }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0", default-features = false }
 
 [dev-dependencies]
-sp-std = { path = "../../primitives/std" }
-sp-io = { path = "../../primitives/io" }
-pallet-balances = { path = "../balances" }
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0" }
+sp-io = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0" }
+pallet-balances = { git = "https://github.com/paritytech/polkadot-sdk", branch = "release-polkadot-v1.1.0" }
 
 [features]
 default = [ "std" ]

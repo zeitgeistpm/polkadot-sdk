@@ -17,10 +17,13 @@
 
 //! Various basic types for use in the assets pallet.
 
+extern crate alloc;
+
 use super::*;
+use alloc::collections::BTreeMap;
 use frame_support::{
 	pallet_prelude::*,
-	traits::{fungible, tokens::ConversionToAssetBalance},
+	traits::{fungible, fungibles::Destroy, tokens::ConversionToAssetBalance},
 };
 use sp_runtime::{traits::Convert, FixedPointNumber, FixedU128};
 
@@ -316,4 +319,25 @@ where
 		Ok(FixedU128::saturating_from_rational(asset.min_balance, min_balance)
 			.saturating_mul_int(balance))
 	}
+}
+
+/// Manage the complete destruction of an asset.
+pub trait ManagedDestroy<AccountId>: Destroy<AccountId> {
+	/// Invoking this function will lead to a guaranteed complete destruction
+	/// of an asset and the return of any deposits associated to it. The duration
+	/// of the destrution process may vary.
+	fn managed_destroy(
+		asset: Self::AssetId,
+		maybe_check_owner: Option<AccountId>,
+	) -> DispatchResult;
+
+	/// Invoking this function will lead to a guaranteed complete destruction
+	/// of an vector of assets and the return of any deposits associated to it. The duration
+	/// of the destrution process may vary.
+	///
+	/// # Arguments:
+	///
+	/// * `assets`: Mapping from asset id's to an `Option<AccountId>` that determines
+	///     whether the `AccountId` must match the owner of that asset
+	fn managed_destroy_multi(assets: BTreeMap<Self::AssetId, Option<AccountId>>) -> DispatchResult;
 }

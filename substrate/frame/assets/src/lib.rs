@@ -170,6 +170,7 @@ use frame_support::{
 	pallet_prelude::DispatchResultWithPostInfo,
 	storage::KeyPrefixIterator,
 	traits::{
+		fungibles::Inspect,
 		tokens::{fungibles, DepositConsequence, WithdrawConsequence},
 		BalanceStatus::Reserved,
 		Currency, EnsureOriginWithArg, ReservableCurrency, StoredMap,
@@ -250,7 +251,12 @@ pub mod pallet {
 		type RemoveItemsLimit: Get<u32>;
 
 		/// Identifier for the class of asset.
-		type AssetId: Member + Parameter + Clone + MaybeSerializeDeserialize + MaxEncodedLen;
+		type AssetId: Member
+			+ Parameter
+			+ Copy
+			+ MaybeSerializeDeserialize
+			+ MaxEncodedLen
+			+ Into<<Self::Destroyer as Inspect<Self::AccountId>>::AssetId>;
 
 		/// Wrapper around `Self::AssetId` to use in dispatchable call signatures. Allows the use
 		/// of compact encoding in instances of the pallet, which will prevent breaking changes
@@ -305,6 +311,9 @@ pub mod pallet {
 		/// The maximum length of a name or symbol stored on-chain.
 		#[pallet::constant]
 		type StringLimit: Get<u32>;
+
+		/// Automatic asset destruction handler.
+		type Destroyer: ManagedDestroy<Self::AccountId>;
 
 		/// A hook to allow a per-asset, per-account minimum balance to be enforced. This must be
 		/// respected in all permissionless operations.
@@ -689,7 +698,7 @@ pub mod pallet {
 				Err(origin) => Some(ensure_signed(origin)?),
 			};
 			let id: T::AssetId = id.into();
-			Self::do_start_destroy(id, maybe_check_owner)
+			T::Destroyer::managed_destroy(id.into(), maybe_check_owner)
 		}
 
 		/// Destroy all accounts associated with a given asset.
