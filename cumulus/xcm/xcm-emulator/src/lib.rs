@@ -32,6 +32,7 @@ pub use frame_support::{
 	},
 	weights::{Weight, WeightMeter},
 };
+pub use frame_system::pallet_prelude::BlockNumberFor;
 pub use frame_system::{Config as SystemConfig, Pallet as SystemPallet};
 pub use pallet_balances::AccountData;
 pub use sp_arithmetic::traits::Bounded;
@@ -49,7 +50,7 @@ pub use cumulus_primitives_core::{
 pub use cumulus_primitives_parachain_inherent::ParachainInherentData;
 pub use cumulus_test_relay_sproof_builder::RelayStateSproofBuilder;
 pub use pallet_message_queue::{Config as MessageQueueConfig, Pallet as MessageQueuePallet};
-pub use parachains_common::{AccountId, Balance, BlockNumber};
+pub use parachains_common::{AccountId, Balance};
 pub use polkadot_primitives;
 pub use polkadot_runtime_parachains::inclusion::{AggregateMessageOrigin, UmpQueueId};
 
@@ -643,7 +644,9 @@ macro_rules! decl_test_parachains {
 							.clone()
 						);
 						<Self as Chain>::System::initialize(&block_number, &parent_head_data.hash(), &Default::default());
-						<<Self as Parachain>::ParachainSystem as Hooks<$crate::BlockNumber>>::on_initialize(block_number);
+						<<Self as Parachain>::ParachainSystem as Hooks<
+							$crate::BlockNumberFor<<Self as Chain>::Runtime>
+						>>::on_initialize(block_number);
 
 						let _ = <Self as Parachain>::ParachainSystem::set_validation_data(
 							<Self as Chain>::RuntimeOrigin::none(),
