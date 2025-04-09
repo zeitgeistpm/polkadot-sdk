@@ -20,16 +20,16 @@ codec = { workspace = true }
 impl-trait-for-tuples = "0.2.2"
 log = { workspace = true }
 scale-info = { features = ["derive"], workspace = true }
-sp-runtime.workspace = true
-frame-support.workspace = true
-frame-system.workspace = true
-frame-benchmarking = { optional = true, workspace = true }
-sp-core.workspace = true
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
+frame-support = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
+frame-system = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
+frame-benchmarking = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false, optional = true }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
 
 [dev-dependencies]
-sp-std = { default-features = true, path = "../../primitives/std" }
-sp-io = { default-features = true, path = "../../primitives/io" }
-pallet-balances = { default-features = true, path = "../balances" }
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
+sp-io = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
+pallet-balances = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
 
 [features]
 default = ["std"]
