@@ -27,9 +27,9 @@ frame-benchmarking = { git = "https://github.com/paritytech/polkadot-sdk", tag =
 sp-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = false }
 
 [dev-dependencies]
-sp-std = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = true }
-sp-io = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = true }
-pallet-balances = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407", default-features = true }
+sp-std = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407" }
+sp-io = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407" }
+pallet-balances = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2407" }
 
 [features]
 default = ["std"]
