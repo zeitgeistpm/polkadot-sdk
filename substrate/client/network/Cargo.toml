@@ -51,22 +51,14 @@ zeroize = { workspace = true, default-features = true }
 prometheus-endpoint.workspace = true
 prometheus-endpoint.default-features = true
 prost = { workspace = true }
-sc-client-api.workspace = true
-sc-client-api.default-features = true
-sc-network-common.workspace = true
-sc-network-common.default-features = true
-sc-network-types.workspace = true
-sc-network-types.default-features = true
-sc-utils.workspace = true
-sc-utils.default-features = true
-sp-arithmetic.workspace = true
-sp-arithmetic.default-features = true
-sp-blockchain.workspace = true
-sp-blockchain.default-features = true
-sp-core.workspace = true
-sp-core.default-features = true
-sp-runtime.workspace = true
-sp-runtime.default-features = true
+sc-client-api = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sc-network-common = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sc-network-types = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sc-utils = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-arithmetic = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-blockchain = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 wasm-timer = { workspace = true }
 litep2p = { workspace = true }
 once_cell = { workspace = true }
