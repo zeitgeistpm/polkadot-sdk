@@ -110,8 +110,8 @@ fn create_spend_arguments<T: Config<I>, I: 'static>(
 	(
 		asset_kind,
 		T::Currency::minimum_balance()
-			.saturating_mul(100u32.into())
 			.saturated_into::<u32>()
+			.saturating_mul(100u32.into())
 			.into(),
 		beneficiary,
 		beneficiary_lookup,
