@@ -34,6 +34,7 @@ use frame_support::{
 };
 use frame_system::RawOrigin;
 use sp_core::crypto::FromEntropy;
+use sp_runtime::SaturatedConversion;
 
 /// Trait describing factory functions for dispatchables' parameters.
 pub trait ArgumentsFactory<AssetKind, Beneficiary> {
@@ -108,7 +109,10 @@ fn create_spend_arguments<T: Config<I>, I: 'static>(
 	let beneficiary_lookup = T::BeneficiaryLookup::unlookup(beneficiary.clone());
 	(
 		asset_kind,
-		T::Currency::minimum_balance().saturating_mul(100u32.into()),
+		T::Currency::minimum_balance()
+			.saturating_mul(100u32.into())
+			.saturated_into::<u32>()
+			.into(),
 		beneficiary,
 		beneficiary_lookup,
 	)
