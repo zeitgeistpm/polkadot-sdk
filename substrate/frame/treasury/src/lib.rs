@@ -680,7 +680,11 @@ pub mod pallet {
 			);
 
 			let id = T::Paymaster::pay(&spend.beneficiary, spend.asset_kind.clone(), spend.amount)
-				.map_err(|_| Error::<T, I>::PayoutError)?;
+				.map_err(|err| {
+					log::error!("Failed to pay: Beneficiary: {:?}, AssetKind: {:?}, Amount: {:?}, Error: {:?}", &spend.beneficiary, spend.asset_kind.clone(), spend.amount, err);
+					panic!("Failed to pay: Beneficiary: {:?}, AssetKind: {:?}, Amount: {:?}, Error: {:?}", &spend.beneficiary, spend.asset_kind.clone(), spend.amount, err);
+					Error::<T, I>::PayoutError
+				})?;
 
 			spend.status = PaymentState::Attempted { id };
 			Spends::<T, I>::insert(index, spend);
