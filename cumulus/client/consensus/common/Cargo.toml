@@ -16,38 +16,22 @@ dyn-clone = { workspace = true }
 futures = { workspace = true }
 log = { workspace = true, default-features = true }
 tracing = { workspace = true, default-features = true }
-sc-client-api.workspace = true
-sc-client-api.default-features = true
-sc-consensus.workspace = true
-sc-consensus.default-features = true
-sc-consensus-babe.workspace = true
-sc-consensus-babe.default-features = true
-sp-blockchain.workspace = true
-sp-blockchain.default-features = true
-sp-consensus.workspace = true
-sp-consensus.default-features = true
-sp-consensus-slots.workspace = true
-sp-consensus-slots.default-features = true
-sp-core.workspace = true
-sp-core.default-features = true
-sp-runtime.workspace = true
-sp-runtime.default-features = true
-sp-timestamp.workspace = true
-sp-timestamp.default-features = true
-sp-trie.workspace = true
-sp-trie.default-features = true
-sp-version.workspace = true
-sp-version.default-features = true
-prometheus-endpoint.workspace = true
-prometheus-endpoint.default-features = true
-polkadot-primitives.workspace = true
-polkadot-primitives.default-features = true
-cumulus-primitives-core.workspace = true
-cumulus-primitives-core.default-features = true
-cumulus-relay-chain-interface.workspace = true
-cumulus-relay-chain-interface.default-features = true
-cumulus-client-pov-recovery.workspace = true
-cumulus-client-pov-recovery.default-features = true
+sc-client-api = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sc-consensus = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sc-consensus-babe = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-blockchain = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-consensus = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-consensus-slots = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-timestamp = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-trie = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+sp-version = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+prometheus-endpoint = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+polkadot-primitives = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+cumulus-primitives-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+cumulus-relay-chain-interface = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+cumulus-client-pov-recovery = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 schnellru = { workspace = true }
 
 [dev-dependencies]
