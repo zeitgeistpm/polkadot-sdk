@@ -27,7 +27,7 @@ sp-runtime = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkad
 sp-timestamp = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 sp-trie = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 sp-version = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
-prometheus-endpoint = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
+prometheus-endpoint = { git = "https://github.com/paritytech/polkadot-sdk", package = "substrate-prometheus-endpoint", tag = "polkadot-stable2409", default-features = true }
 polkadot-primitives = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 cumulus-primitives-core = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
 cumulus-relay-chain-interface = { git = "https://github.com/paritytech/polkadot-sdk", tag = "polkadot-stable2409", default-features = true }
